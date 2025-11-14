@@ -42,11 +42,9 @@ By providing a modern, multilingual platform, this project facilitates knowledge
 - TypeScript for type safety and developer experience
 
 ### 🧪 **Quality Assurance**
-- Comprehensive test coverage (unit, E2E, API tests)
 - TypeScript for compile-time type checking
 - ESLint for code quality enforcement
 - BMAD methodology integration for structured development
-- Fixture-based testing architecture
 
 ## 📁 Project Structure
 
@@ -81,10 +79,7 @@ professor-site/
 ### Installation
 
 ```bash
-# Install dependencies
-npm run install:code
-
-# Or navigate to the code folder
+# Navigate to the code folder and install dependencies
 cd code
 npm install
 ```
@@ -92,10 +87,7 @@ npm install
 ### Development
 
 ```bash
-# From project root:
-npm run dev
-
-# Or from code folder:
+# From code folder:
 cd code
 npm run dev
 ```
@@ -104,24 +96,15 @@ The development server will start at [http://localhost:3000](http://localhost:30
 
 ## 🛠️ Available Scripts
 
-### From Project Root
-
-- `npm run dev` - Start development server
-- `npm run build` - Create production build
-- `npm run start` - Start production server
-- `npm run lint` - Run linter
-- `npm run install:code` - Install dependencies
-- `npm run clean` - Clean build and node_modules
-
-### From `code/` Folder
+All scripts must be run from the `code/` directory:
 
 ```bash
 cd code
 
-npm run dev     # Development
-npm run build   # Production build
-npm run start   # Production server
-npm run lint    # Linter
+npm run dev     # Start development server
+npm run build   # Create production build
+npm run start   # Start production server
+npm run lint    # Run ESLint
 ```
 
 ## 🏗️ Technology Stack
@@ -165,32 +148,6 @@ All project documentation is in the `/docs/` folder:
 - **reports/** - Test reports, stories, PRDs
 - **requirements/** - Epics, user stories, requirements
 
-## 🧪 Testing
-
-```bash
-cd code
-
-# Unit tests
-npm test
-
-# E2E tests
-npm run test:e2e
-
-# Run all tests
-npm run test:all
-```
-
-### Test Architecture
-
-This project follows a comprehensive testing strategy:
-
-- **Unit Tests:** Component and function-level testing
-- **E2E Tests:** Full user journey testing with Playwright
-- **API Tests:** Backend endpoint testing
-- **Fixtures:** Reusable test data and scenarios
-
-All tests follow BMAD test architecture principles for maintainability and reliability.
-
 ## 🤝 Contributing
 
 We welcome contributions from the community! Whether you're fixing bugs, improving documentation, or proposing new features, your input is valuable.
@@ -208,9 +165,8 @@ Please read [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines on our co
 ### Quick Contribution Guidelines
 
 - Follow existing code style (TypeScript + ESLint)
-- Write or update tests for new features
 - Update documentation as needed
-- Ensure all tests pass before submitting
+- Run linter before submitting (`npm run lint`)
 - Use CommonMark standards for documentation
 
 ## 📝 License

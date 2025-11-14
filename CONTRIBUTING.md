@@ -72,14 +72,14 @@ git remote add upstream https://github.com/danielvm-git/professor-site.git
 4. **Install dependencies**:
 
 ```bash
-npm run install:code
-# or
-cd code && npm install
+cd code
+npm install
 ```
 
 5. **Start development server**:
 
 ```bash
+cd code
 npm run dev
 ```
 
@@ -124,12 +124,6 @@ We welcome various types of contributions:
 - Fix translation inconsistencies
 - Suggest new language support
 
-#### 🧪 Testing
-
-- Add missing test coverage
-- Improve existing tests
-- Add E2E test scenarios
-
 ## Development Workflow
 
 ### Branch Strategy
@@ -162,8 +156,6 @@ git checkout -b feature/your-feature-name
 ```bash
 cd code
 npm run lint        # Check code style
-npm test            # Run unit tests
-npm run test:e2e    # Run E2E tests
 npm run build       # Verify build succeeds
 ```
 
@@ -275,75 +267,6 @@ code/src/
 - **Functions**: `camelCase` (e.g., `getTranslation`)
 - **Constants**: `UPPER_SNAKE_CASE` (e.g., `DEFAULT_LANGUAGE`)
 - **Types/Interfaces**: `PascalCase` (e.g., `UserProfile`, `TranslationKey`)
-
-## Testing Guidelines
-
-### Test Coverage Requirements
-
-- **Unit tests** for utility functions and hooks
-- **Component tests** for UI components
-- **E2E tests** for critical user journeys
-
-### Writing Unit Tests
-
-```typescript
-// Example: hooks/use-language.test.ts
-import { renderHook } from '@testing-library/react'
-import { useLanguage } from './use-language'
-
-describe('useLanguage', () => {
-  it('should return default language', () => {
-    const { result } = renderHook(() => useLanguage())
-    expect(result.current.language).toBe('pt-BR')
-  })
-
-  it('should translate keys correctly', () => {
-    const { result } = renderHook(() => useLanguage())
-    expect(result.current.t('home')).toBe('Início')
-  })
-})
-```
-
-### Writing E2E Tests
-
-```typescript
-// Example: tests/e2e/navigation.spec.ts
-import { test, expect } from '@playwright/test'
-
-test('user can navigate to publications page', async ({ page }) => {
-  await page.goto('/')
-  await page.click('text=Publicações')
-  await expect(page).toHaveURL('/publicacoes')
-  await expect(page.locator('h1')).toContainText('Publicações')
-})
-
-test('language switching works', async ({ page }) => {
-  await page.goto('/')
-  await page.selectOption('select[aria-label="Language"]', 'en')
-  await expect(page.locator('text=Publications')).toBeVisible()
-})
-```
-
-### Running Tests
-
-```bash
-cd code
-
-# Unit tests
-npm test
-
-# Unit tests in watch mode
-npm test -- --watch
-
-# E2E tests
-npm run test:e2e
-
-# E2E tests in headed mode (see browser)
-npm run test:e2e -- --headed
-
-# Generate coverage report
-npm test -- --coverage
-```
 
 ## Documentation Standards
 
@@ -493,10 +416,10 @@ Brief description of changes and motivation.
 
 ## Testing
 
-Describe the tests you ran and how to reproduce:
+Describe the testing you performed:
 
-- [ ] Unit tests pass
-- [ ] E2E tests pass
+- [ ] Linter passes (`npm run lint`)
+- [ ] Build succeeds (`npm run build`)
 - [ ] Manual testing completed
 
 ## Screenshots (if applicable)
@@ -510,14 +433,14 @@ Add screenshots for UI changes.
 - [ ] I have commented my code, particularly in hard-to-understand areas
 - [ ] I have made corresponding changes to the documentation
 - [ ] My changes generate no new warnings or errors
-- [ ] I have added tests that prove my fix is effective or that my feature works
-- [ ] New and existing unit tests pass locally with my changes
+- [ ] Linter passes without errors
+- [ ] Build completes successfully
 - [ ] Any dependent changes have been merged and published
 ```
 
 ### Review Process
 
-1. **Automated checks** must pass (lint, tests, build)
+1. **Automated checks** must pass (lint, build)
 2. **Maintainer review** - at least one approval required
 3. **Address feedback** - respond to comments and make requested changes
 4. **Final approval** - maintainer will merge when ready
